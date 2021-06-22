@@ -1,0 +1,41 @@
+Coisas a melhorar neste algortitmo:
+- Em Shipment, Drone pode ficar com espaço livre, já que só tem em conta 1 order (e.g. ultimo item da order)
+- Só aceita caminhos _ -> WH -> Order.
+
+-------------------------------------
+Greedy:
+Termina quando não há mais orders ou não é possível fazer shipments (falta de produtos maybe)
+  Para cada Drone:
+    BestShipment()
+
+
+BestShipment():
+
+Para Cada Order que não esteja completa:
+  Faz para cada warehouse:
+    new Shipment()
+Escolhe shipment com melhor score
+shipment.execute()
+
+
+Shipment():
+
+Para cada produto da order:
+  busca quantidade disponivel de produto
+  append a lista
+criada lista de produtos que esse WH tem da Order
+Da lista de produtos criada, vai adicionando a drone até não caber mais, so mais pesado para o mais leve (possível aplicar knapsack aqui)
+Score()
+
+
+Score():
+percent = carga_drone / carga_order 
+turns   = Soma das 2 distâncias mais 1's por pick up's e drop's
+score   = percent / turns
+
+Shipment.execute():
+- remove produtos do armazém
+- remove produtos da orders
+- atualiza posição do drone
+- adiciona shipment ao drone
+- adiciona turnos ao drone
